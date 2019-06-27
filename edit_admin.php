@@ -56,7 +56,7 @@ if( mysqli_num_rows($query) < 1 ){
     <header>
         <h3>edit data costumer</h3>
     </header>
-
+<div class="container">
     <form action="proses-edit.php" method="POST">
 
         <fieldset>
@@ -87,16 +87,17 @@ if( mysqli_num_rows($query) < 1 ){
             <label for="total">total: </label>
             <input readonly="true" type="text" name="total" placeholder="total" value="<?php echo $data['total'] ?>" / >
         </p>
-<!--        <p>
+        <!-- <p>
             <label for="pembayaran">pembayaran: </label>
             <input type="text" name="pembayaran" placeholder="pembayaran" value="<?php echo $data['pembayaran'] ?>" />
-        </p>
--->        <p>
+        </p> -->
+        <p>
             <input type="hidden" name="liga" placeholder="liga" value="<?php echo $data['liga'] ?>" />
         </p>
         <p>
             <label for="pembayaran">mode pembayaran: </label>
-            <?php $pembayaran = $data['pembayaran']; ?>
+            <input type="text" name="pembayaran" placeholder="pembayaran" value="<?php echo $data['pembayaran'] ?>">
+            
             <select name="pembayaran">
                 <option <?php echo ($pembayaran == 'bca') ? "selected": "" ?>>bca</option>
                 <option <?php echo ($pembayaran == 'bri') ? "selected": "" ?>>bri</option>
@@ -104,13 +105,17 @@ if( mysqli_num_rows($query) < 1 ){
             </select>
         </p>
         <p>
-            <input type="submit" value="Simpan" name="simpan" />
+            <input type="submit" value="Simpan" class="btn btn-primary" name="simpan" />
         </p>
 
         </fieldset>
 
 
     </form>
-                    </div></div></div></div></section>
+</div>
+       </div>
+   </div>
+</div>
+</div>
     </body>
 </html>

@@ -1,40 +1,4 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
-<head>
-    <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="img/fav.png">
-    <!-- Author Meta -->
-    <meta name="author" content="CodePixar">
-    <!-- Meta Description -->
-    <meta name="description" content="">
-    <!-- Meta Keyword -->
-    <meta name="keywords" content="">
-    <!-- meta character set -->
-    <meta charset="UTF-8">
-    <!-- Site Title -->
-    <title>pemesanan tiket bola</title>
-
-    <!--
-            CSS
-            ============================================= -->
-    <link rel="stylesheet" href="css/linearicons.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/nouislider.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">
-</head>
-
-<body>
-
-    <?php include 'header.php'; ?>
-
-
+<?php require "header.php"; ?>
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
         <div class="container">
@@ -42,7 +6,7 @@
                 <div class="col-first">
                     <h1>jadwal pertandingan liga 1</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.php">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="halaman_costumer.php">Home<span class="lnr lnr-arrow-right"></span></a>
                         <a href="jadwal1.php">jadwal club<span class="lnr lnr-arrow-right"></span></a>
                         <a href="kategori1.php">Pesan Tiket</a>
                     </nav>
@@ -55,58 +19,57 @@
     <!--================Cart Area =================-->
 
 <?php
-include "config.php";
+include "koneksi.php";
     if ($_GET)
     {
         $cari=$_GET['cari'];
-        $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'liga1' and partai_pertandingan like '%$cari%' OR waktu_pertandingan like '%$cari%' OR stadion like '%$cari%'");
+        $query = mysqli_query($koneksi,"SELECT *, DATE(waktu_pertandingan)  as waktu, TIME(waktu_pertandingan) as jam, partai_pertandingan,stadion FROM pertandingan where liga = 'liga1' and partai_pertandingan like '%$cari%'");
     }else{
-        $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'liga1'");
+        $query = mysqli_query($koneksi,"SELECT *, DATE(waktu_pertandingan)  as waktu, TIME(waktu_pertandingan) as jam,partai_pertandingan,stadion FROM pertandingan where liga = 'liga1'");
 }?>
                             <?php if(mysqli_num_rows($query)>0){ ?>
             
     <section class="cart_area">
         <div class="container">
-            <div class="cart_inner text-center">
+            <div class="cart_inner">
                 <div class="table-responsive">
+                    <form action="jadwal2.php?" method="get">
                     <table class="table">
                         <thead>
                             <tr>
-                                .<th scope="col">GAMBAR </th>
                                 <th scope="col">KLUB</th>
                                 <th scope="col">STADION</th>
-                                <th scope="col">TANGGAL MAIN</th>
-                                <!-- <th scope="col">JAM MAIN</th> -->
+                                <th scope="col">TANGGAL</th>
+                                <th scope="col">JAM MAIN</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody></form>
 <?php
             while($data = mysqli_fetch_array($query)){
         ?>
                             <tr>
                                 <td>
                                     <div class="media">
-                                        <!-- <div class="d-flex">
-                                            <img src="Liga 1/<?php echo $data['gambar'];?>" alt="" width='100px' height='100px'>
-                                        </div> -->
+                                        <div class="d-flex">
+                                            <img src="img/product/liga1/<?php echo $data['gambar'];?>" alt="" width='100px' height='100px'>
+                                        </div>
                                         <div class="media-body">
-                                            <img src="Liga 1/<?php echo $data['gambar'];?>" alt="" width='100px' height='100px'>
+                                            <p><?php echo $data["partai_pertandingan"];?></p>
                                         </div>
                                     </div>
                                 </td>
-                                <td><p><?php echo $data["partai_pertandingan"];?></p></td>
                                 <td>
                                     <P><?php echo $data["stadion"];?></P>
                                 </td>
                                 <td>
-                                    <p><?php echo $data["waktu_pertandingan"];?> WIB </p>
+                                    <p><?php echo $data["waktu"];?> </p>
+
                                 </td>
-                                <!-- <td>
+                                 <td>
                                     <p><?php echo $data["jam"];?> WIB</p>
-                                </td> -->
+                                </td>
                             </tr>
-                            <?php }
-?>
+                            <?php }?>
                         </tbody>
                     </table>
                 </div>
@@ -128,7 +91,6 @@ else{
 
     <!--================End Cart Area =================-->
 
-    <!-- start footer Area -->
     <footer class="footer-area section_gap">
         <div class="container">
             <div class="row">
@@ -136,10 +98,10 @@ else{
                     <div class="single-footer-widget">
                         <h6>About Us</h6>
                         <p>
-                            Whatsapp :  - 0822 3929 7595 DIKY<br>
-                                        - 0878 3891 6161 YUNUS<br>
-                                        - 0822 6634 4725 IQBAL<br>
+                            Whatsapp :  - 082239297766<br>
+                                        - 082233445566<br>
                             Instagram : - bolatiket
+
                         </p>
                     </div>
                 </div>
@@ -150,24 +112,22 @@ else{
                         <div class="" id="mc_embed_signup">
 
                             <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                method="get" class="form-inline">
+                             method="get" class="form-inline">
 
                                 <div class="d-flex flex-row">
 
-                                    <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter Email '" required="" type="email">
+                                    <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+                                     required="" type="email">
 
 
-                                    <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right"
-                                            aria-hidden="true"></i></button>
+                                    <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
                                     <div style="position: absolute; left: -5000px;">
-                                        <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
-                                            type="text">
+                                        <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
                                     </div>
 
                                     <!-- <div class="col-lg-4 col-md-4">
-                                                    <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-                                                </div>  -->
+                                                <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
+                                            </div>  -->
                                 </div>
                                 <div class="info"></div>
                             </form>
@@ -203,6 +163,7 @@ else{
                 </div>
             </div>
             <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+                
             </div>
         </div>
     </footer>
@@ -216,12 +177,10 @@ else{
     <script src="js/jquery.nice-select.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
     <script src="js/nouislider.min.js"></script>
+    <script src="js/countdown.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <!--gmaps Js-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
     <script src="js/gmaps.min.js"></script>
     <script src="js/main.js"></script>
-</body>
-
-</html>

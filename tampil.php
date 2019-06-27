@@ -10,7 +10,7 @@
         Tiket Anda Berhasil Terdaftar, <b style="color: #000">KODE PEMESANAN : <?= $id ?></b>
     </div>
     <?php } ?> -->
-    <table align="center" class="pure-table pure-table-bordered"">
+    <table align="center" class="pure-table pure-table-bordered">
         <thead>
             <tr align="center">
                 <th>ID</th> 
@@ -30,9 +30,9 @@
         <tbody>
 
 <?php
-    include "config.php";
+    include "koneksi.php";
     
-    $koneksi = mysqli_query($mysqli, "SELECT * FROM pemesanan"); // Query untuk menampilkan semua
+    $koneksi = mysqli_query($koneksi, "SELECT * FROM pemesanan order by id "); // Query untuk menampilkan semua
     
     $data = mysqli_fetch_array($koneksi);// Ambil semua data dari hasil eksekusi $sql
         echo "<tr>";

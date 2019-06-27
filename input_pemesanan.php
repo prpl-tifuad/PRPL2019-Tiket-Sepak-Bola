@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "koneksi.php";
 
     $id = $_POST['id'];
     $nama = $_POST['nama'];
@@ -21,11 +21,11 @@ include "config.php";
 
 $hehe =  "INSERT INTO pemesanan(id,nama,klub_b,tanggal,stadion,kelas,total,pembayaran,liga) VALUES ('$id','$nama','$klub_b','$tanggal','$stadion','$kelas','$total','$pembayaran','$liga')";
 
-if($mysqli -> query($hehe)){
+if($koneksi -> query($hehe)){
     echo "berhasil";
 }
 else{
-    echo "gagal".$mysqli -> error();
+    echo "gagal".$koneksi -> error();
 }
     header('Location: tampil.php');
 ?>

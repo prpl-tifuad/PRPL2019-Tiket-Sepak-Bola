@@ -1,101 +1,4 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
-<head>
-    <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="img/fav.png">
-    <!-- Author Meta -->
-    <meta name="author" content="CodePixar">
-    <!-- Meta Description -->
-    <meta name="description" content="">
-    <!-- Meta Keyword -->
-    <meta name="keywords" content="">
-    <!-- meta character set -->
-    <meta charset="UTF-8">
-    <!-- Site Title -->
-    <title>pemesanan tiket bola</title>
-
-    <!--
-            CSS
-            ============================================= -->
-    <link rel="stylesheet" href="css/linearicons.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/nouislider.min.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/main.css">
-</head>
-
-<body>
-
-    <!-- Start Header Area -->
-    <header class="header_area sticky-header">
-        <div class="main_menu">
-            <nav class="navbar navbar-expand-lg navbar-light main_box">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" href="index.php"><img src="img/pssi.png" width="100px" alt=""></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                            <li class="nav-item submenu dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                 aria-expanded="false">liga 1</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="jadwal1.php">jadwal pertandingan</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="kategori1.php">tiket liga 1</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                 aria-expanded="false">liga 2</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="jadwal2.php">jadwal pertandingan</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="kategori2.php">tiket liga 2</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item submenu dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                 aria-expanded="false">piala presiden</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="jadwalpres.php">jadwal pertandingan</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="kategoripres.php">tiket piala presiden</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="login.php">login</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
-                            <li class="nav-item">
-                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <div class="search_input" id="search_input_box">
-            <div class="container">
-                <form class="d-flex justify-content-between" action="jadwalpres.php?" method="get">
-                    <input type="text" class="form-control" name="cari" id="search_input" placeholder="Search Here">
-                    <button type="submit" class="btn"></button>
-                    <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-                </form>
-            </div>
-        </div>
-    </header>
-    <!-- End Header Area -->
+<?php require 'header.php'; ?>
 
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
@@ -105,7 +8,7 @@
                     <h1>jadwal pertandingan <br> 
                     piala presiden</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="halaman_costumer.php">Home<span class="lnr lnr-arrow-right"></span></a>
                         <a href="jadwalpres.php">jadwal club<span class="lnr lnr-arrow-right"></span></a>
                         <a href="kategoripres.php">Pesan Tiket</a>
                     </nav>
@@ -118,60 +21,56 @@
     <!--================Cart Area =================-->
 
 <?php
-include "config.php";
+include "koneksi.php";
     if ($_GET)
     {
         $cari=$_GET['cari'];
-        $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'pialapresiden' and partai_pertandingan like '%$cari%' OR waktu_pertandingan like '%$cari%' OR stadion like '%$cari%'");
+        $query = mysqli_query($koneksi,"SELECT *, DATE(waktu_pertandingan)  as waktu, TIME(waktu_pertandingan) as jam, partai_pertandingan,stadion FROM pertandingan where liga = 'pialapresiden' and partai_pertandingan like '%$cari%'");
     }else{
-        $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'pialapresiden'");
+        $query = mysqli_query($koneksi,"SELECT *, DATE(waktu_pertandingan)  as waktu, TIME(waktu_pertandingan) as jam,partai_pertandingan,stadion FROM pertandingan where liga = 'pialapresiden'");
 }?>
                             <?php if(mysqli_num_rows($query)>0){ ?>
             
     <section class="cart_area">
         <div class="container">
-            <div class="cart_inner text-center">
+            <div class="cart_inner">
                 <div class="table-responsive">
+                    <form action="jadwal2.php?" method="get">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">GAMBAR</th>
                                 <th scope="col">KLUB</th>
                                 <th scope="col">STADION</th>
-                                <th scope="col">TANGGAL MAIN</th>
-                                <!-- <th scope="col">JAM MAIN</th> -->
+                                <th scope="col">TANGGAL</th>
+                                <th scope="col">JAM MAIN</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody></form>
 <?php
             while($data = mysqli_fetch_array($query)){
         ?>
                             <tr>
                                 <td>
                                     <div class="media">
-                                        <!-- <div class="d-flex">
-                                            <img src="Piala presiden/<?php echo $data['gambar'];?>" alt="" width='100px' height='100px'>
-                                        </div> -->
+                                        <div class="d-flex">
+                                            <img src="img/product/pialapresiden/<?php echo $data['gambar'];?>" alt="" width='100px' height='100px'>
+                                        </div>
                                         <div class="media-body">
-                                            <img src="Piala presiden/<?php echo $data['gambar'];?>" alt="" width='100px' height='100px'>
+                                            <p><?php echo $data["partai_pertandingan"];?></p>
                                         </div>
                                     </div>
-                                </td>
-                                <td>
-                                    <p><?php echo $data["partai_pertandingan"];?></p>
                                 </td>
                                 <td>
                                     <P><?php echo $data["stadion"];?></P>
                                 </td>
                                 <td>
-                                    <p><?php echo $data["waktu_pertandingan"];?> WIB</p>
+                                    <p><?php echo $data["waktu"];?></p>
                                 </td>
-                               <!--  <td>
+                                <td>
                                     <p><?php echo $data["jam"];?> WIB</p>
-                                </td> -->
+                                </td>
                             </tr>
-                            <?php }
-?>
+                            <?php }?>
                         </tbody>
                     </table>
                 </div>
@@ -201,10 +100,9 @@ else{
                     <div class="single-footer-widget">
                         <h6>About Us</h6>
                         <p>
-                            Whatsapp :  - 0822 3929 7595 DIKY<br>
-                                        - 0878 3891 6161 YUNUS<br>
-                                        - 0822 6634 4725 IQBAL<br>
-                            Instagram : - bolatiket
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                            ut labore dolore
+                            magna aliqua.
                         </p>
                     </div>
                 </div>
@@ -268,7 +166,10 @@ else{
                 </div>
             </div>
             <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-                
+                <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
             </div>
         </div>
     </footer>
