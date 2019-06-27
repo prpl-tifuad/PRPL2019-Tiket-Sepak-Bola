@@ -38,71 +38,7 @@ include_once("config.php");
 
 <body>
 
-	<!-- Start Header Area -->
-	<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.php"><img src="img/pssi.png" width="150px" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Liga 1</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="jadwal1.php">Jadwal Pertandingan</a></li>
-									<li class="nav-item"><a class="nav-link" href="kategori1.php">tiket liga 1</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Liga 2</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="jadwal2.php">Jadwal Pertandingan</a></li>
-									<li class="nav-item"><a class="nav-link" href="kategori2.php">tiket liga 2</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Piala Presiden</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="Jadwalpres.php">Jadwal Pertandingan</a></li>
-									<li class="nav-item"><a class="nav-link" href="kategoripres.php">tiket piala presiden</a></li>
-								</ul>
-							</li>
-							
-							<li class="nav-item"><a class="nav-link" href="login.php">login</a></li>
-						</ul> 
-						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="keranjang.php" class="cart"><span class="ti-bag"></span></a></li>
-							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<div class="search_input" id="search_input_box">
-			<div class="container">
-				<form class="d-flex justify-content-between">
-					<input type="text" class="form-control" id="search_input" placeholder="Search Here">
-					<button type="submit" class="btn"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-				</form>
-			</div>
-		</div>
-	</header>
-	<!-- End Header Area -->
+	<?php include 'header.php'; ?>
 
 	<!-- start banner Area -->
 	<section class="banner-area">
@@ -154,13 +90,19 @@ include_once("config.php");
 		</div>
 	</section>
 	<!-- End banner Area -->
+		<?php if ($_GET) { 
+		$kode = $_GET['Pesan'];
+		?>
+	<div class="alert alert-primary" role="alert">
+  		Tiket Anda Berhasil Terdaftar, <b style="color: #000">KODE PEMESANAN : <?= $kode ?></b>
+	</div>
+	<?php } ?>
 
 	<!-- start product Area -->
-	<section class="owl-carousel active-product-area section_gap">
+	<section class="owl-carousel active-product-area section_gap"><
 		<!-- single product slide -->
 		<?php
 include "config.php";
-
 $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'liga1' limit 8");?>
 		<div class="single-product-slider">
 			<div class="container">
@@ -292,8 +234,8 @@ $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'pialapre
 					<?php }} ?>
 				</div>
 			</div>
-		</div>
-	</section>
+    </div>
+    </section>
 	<!-- end product Area -->
 
 	<!-- start footer Area -->
@@ -328,9 +270,6 @@ $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'pialapre
 
 
 									<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-									<div style="position: absolute; left: -5000px;">
-										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-									</div>
 
 									<!-- <div class="col-lg-4 col-md-4">
 												<button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
@@ -394,4 +333,3 @@ $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'pialapre
 </body>
 
 </html>
-?>
