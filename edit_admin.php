@@ -9,7 +9,7 @@
     <title>admin</title>
 </head>
 <body>
-<form method="post" action="pencarian.php">
+<form method="post" action="cari.php">
  <nav>
     <div class="nav-wrapper">
       <a href="halaman_admin.php" class="brand-logo">ADMIN</a>
