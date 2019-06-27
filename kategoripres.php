@@ -58,18 +58,18 @@
 					<div class="head">pembelian tiket lain</div>
 					<ul class="main-categories">
 						<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								 class="lnr lnr-arrow-right"></span>LIGA 2<span class="number">(2)</span></a>
+								 class="lnr lnr-arrow-right"></span>LIGA 1<span class="number">(2)</span></a>
 							<ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
-								<li class="main-nav-list child"><a href="#">Jadwal Pertandingan</a></li>
-								<li class="main-nav-list child"><a href="#">Beli Tiket Liga 2</a></li>
+								<li class="main-nav-list child"><a href="jadwal1.php">Jadwal Pertandingan</a></li>
+								<li class="main-nav-list child"><a href="kategori1.php">Beli Tiket Liga 1</a></li>
 							</ul>
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#meatFish" aria-expanded="false" aria-controls="meatFish"><span
-								 class="lnr lnr-arrow-right"></span>Piala Presiden<span class="number">(2)</span></a>
+								 class="lnr lnr-arrow-right"></span>LIGA 2<span class="number">(2)</span></a>
 							<ul class="collapse" id="meatFish" data-toggle="collapse" aria-expanded="false" aria-controls="meatFish">
-								<li class="main-nav-list child"><a href="#">Jadwal pertandingan</a></li>
-								<li class="main-nav-list child"><a href="#">beli tiket piala presiden</a></li>
+								<li class="main-nav-list child"><a href="jadwal2.php">Jadwal pertandingan</a></li>
+								<li class="main-nav-list child"><a href="kategori2.php">Beli Tiket Liga 2</a></li>
 							</ul>
 						</li>
 

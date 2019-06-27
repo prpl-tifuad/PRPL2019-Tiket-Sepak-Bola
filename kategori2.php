@@ -68,8 +68,8 @@
 						<li class="main-nav-list"><a data-toggle="collapse" href="#meatFish" aria-expanded="false" aria-controls="meatFish"><span
 								 class="lnr lnr-arrow-right"></span>Piala Presiden<span class="number">(2)</span></a>
 							<ul class="collapse" id="meatFish" data-toggle="collapse" aria-expanded="false" aria-controls="meatFish">
-								<li class="main-nav-list child"><a href="#">Jadwal pertandingan</a></li>
-								<li class="main-nav-list child"><a href="#">beli tiket piala presiden</a></li>
+								<li class="main-nav-list child"><a href="jadwalpres.php">Jadwal pertandingan</a></li>
+								<li class="main-nav-list child"><a href="kategoripres.php">beli tiket piala presiden</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -155,7 +155,7 @@ if ($_GET)
 					</div>
 				</div>
 			</div>
-		</div>
+        
 	</section>
 	<!-- End related-product Area -->
 
