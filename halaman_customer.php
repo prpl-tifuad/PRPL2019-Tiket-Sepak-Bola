@@ -106,7 +106,7 @@ include "config.php";
 $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'liga1' limit 8");?>
 		<div class="single-product-slider">
 			<div class="container">
-				<div class="row justify-content-center">
+				<div claass="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
 							<h1>LIGA 1</h1>
