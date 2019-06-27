@@ -103,10 +103,11 @@ include_once("config.php");
 		<!-- single product slide -->
 		<?php
 include "config.php";
+
 $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'liga1' limit 8");?>
-		<div class="single-product-slider">
+				<div class="single-product-slider">
 			<div class="container">
-				<div claass="row justify-content-center">
+				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
 							<h1>LIGA 1</h1>
@@ -132,7 +133,7 @@ $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'liga1' l
 								</div>
 								<div class="prd-bottom">
 
-									<a href="pemesanan.php?tiket=<?= $data['kode_pertandingan'] ?>" class="social-info">
+									<a href="" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text">pesan</p>
 									</a>
@@ -140,10 +141,11 @@ $query = mysqli_query($mysqli,"SELECT * FROM pertandingan where liga = 'liga1' l
 							</div>
 						</div>
 					</div>
-				<?php }} ?>
+					<?php }} ?>
 					</div>
 				</div>
 			</div>
+		</div>
 			<?php
 include "config.php";
 
