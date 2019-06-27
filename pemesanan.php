@@ -1,10 +1,19 @@
-
 <?php
-require "header.php";
-require "koneksi.php";
-    $data=$koneksi->query("SELECT * FROM pertandingan WHERE kode_pertandingan='{$_GET['kode_pertandingan']}'");
-    $r=$data->fetch_array();
-    ?>
+        include 'config.php';
+        $kode_pertandingan = $_GET['tiket'];
+        $data = mysqli_query($mysqli,"SELECT *, Date(waktu_pertandingan) as tanggal, time(waktu_pertandingan) as waktu FROM pertandingan where liga = 'liga1' or liga='liga2' or liga='pialapresiden' and kode_pertandingan = '$kode_pertandingan'")
+     ?>
+     <?php if(mysqli_num_rows($data)>0){
+        while($r = mysqli_fetch_array($data)){
+            $pertandingan = $data['partai_pertandingan']; 
+            $tanggal = $data['tanggal'];
+            $waktu = $data['waktu'];
+            $stadion = $data['stadion'];
+            $harga = $data['harga_tiket'];
+        }
+
+    }?>
+
         <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
         <div class="container">
