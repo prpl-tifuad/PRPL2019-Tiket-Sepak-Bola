@@ -46,7 +46,7 @@
 
     <tbody>
         <?php
-        $sql = "SELECT * FROM pemesanan";
+        $sql = "SELECT * FROM pemesanan where liga='liga 1'";
         $query = mysqli_query($koneksi, $sql);
 
         while($data = mysqli_fetch_array($query)){

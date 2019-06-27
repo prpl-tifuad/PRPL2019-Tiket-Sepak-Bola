@@ -1,7 +1,32 @@
+<?php include 'koneksi.php'; ?>
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+    <title>admin</title>
+</head>
+<body>
+<form method="post" action="pencarian.php">
+ <nav>
+    <div class="nav-wrapper">
+      <a href="halaman_admin.php" class="brand-logo">ADMIN</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+       
+        <!-- <li class="input-field"><input type="text" name="cari" required></li> -->
+        <li><a href="halaman_admin1.php">liga 1</a></li>&emsp;
+        <li><a href="halaman_admin2.php">liga 2</a></li>
+        <li><a href="halaman_admin3.php">piala presiden</a></li>
+        <i class="small material-icons left" >search</i>
+         <li class="input-field"><input type="text" name="cari" required>
+         </li>
+      </ul>
+    </div>
+  </nav>
+</form>
 <?php
-require 'headerA.php';
-include("koneksi.php");
-
 if( !isset($_GET['id']) ){
     header('Location: halamam_admin.php');
 }
@@ -28,22 +53,6 @@ if( mysqli_num_rows($query) < 1 ){
     <title>admin</title>
 </head>
 <body>
-
-<section class="banner-area">
-        <div class="container">
-            <div class="row fullscreen align-items-center justify-content-start">
-                <div class="col-lg-12">
-                    <div class="active-banner-slider owl-carousel">
-                        <!-- single-slide -->
-                        <div class="row single-slide align-items-center d-flex">
-                            <div class="col-lg-5 col-md-6">
-                                <div class="banner-content">
-                                    <h2>Football Ticket <br>League Indonesia!</h2>         
-                                    
-                                </div>
-                            </div>
-                        </div>
-                            <br>
     <header>
         <h3>edit data costumer</h3>
     </header>
