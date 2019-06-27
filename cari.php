@@ -1,6 +1,6 @@
 <?php include 'koneksi.php';
 $key = $_POST['cari'];
-echo "Keyword pencarian = $key";
+// echo "Keyword pencarian = $key";
 echo "<br>";
 $result =mysqli_query($koneksi, "SELECT * FROM pemesanan WHERE nama LIKE '%$key%' ");
 	// $SQL = mysqli_query($connect,$QueryString); 
@@ -72,5 +72,5 @@ $result =mysqli_query($koneksi, "SELECT * FROM pemesanan WHERE nama LIKE '%$key%
 			}
 		?>	
 	</table>
-	<a href="halaman_admin.php">kembali</a>
+	<!-- <a href="halaman_admin.php">kembali</a> -->
                     </div></div></div></div></section></body></html>
