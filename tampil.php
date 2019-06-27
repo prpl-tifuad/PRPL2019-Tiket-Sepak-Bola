@@ -32,7 +32,7 @@
 <?php
     include "koneksi.php";
     
-    $koneksi = mysqli_query($koneksi, "SELECT * FROM pemesanan ORDER BY id DESC"); // Query untuk menampilkan semua
+    $koneksi = mysqli_query($koneksi, "SELECT * FROM pemesanan"); // Query untuk menampilkan semua
     
     $data = mysqli_fetch_array($koneksi);// Ambil semua data dari hasil eksekusi $sql
         echo "<tr>";
