@@ -1,4 +1,5 @@
 
+
 <?php
 require "header.php";
 require "koneksi.php";
@@ -6,22 +7,24 @@ require "koneksi.php";
     $r=$data->fetch_array();
     ?>
         <!-- Start Banner Area -->
-    <section class="banner-area organic-breadcrumb">
-        <div class="container">
-            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-                <div class="col-first">
-                    <h1>pemesanan tiket</h1>
-                    <nav class="d-flex align-items-center">
-                        <a href="halaman_costumer.php">isi pemesanan<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="single-product.html">cetak</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- End Banner Area -->
 
     <!--================Checkout Area =================-->
+    <?php
+        include 'config.php';
+        $kode_pertandingan = $_GET['tiket'];
+        $query = mysqli_query($mysqli,"SELECT *, Date(waktu_pertandingan) as tanggal, time(waktu_pertandingan) as waktu FROM pertandingan where liga = 'liga1' or liga='liga2' or liga='pialapresiden' and kode_pertandingan = '$kode_pertandingan'")
+     ?>
+     <?php if(mysqli_num_rows($query)>0){
+        while($data = mysqli_fetch_array($query)){
+            $pertandingan = $data['partai_pertandingan']; 
+            $tanggal = $data['tanggal'];
+            $waktu = $data['waktu'];
+            $stadion = $data['stadion'];
+            $harga = $data['harga_tiket'];
+        }
+
+    }?>
     <section class="checkout_area section_gap" >
         <div class="container">
             <div class="billing_details">
@@ -44,6 +47,24 @@ require "koneksi.php";
                             <div class="col-md-10 form-group p_star">
                                 <h5>NAMA</h5>
                                 <input type="text" class="form-control" name="nama" placeholder="...">
+                        <h3>Isilah Pemesanan ini Dengan Tepat</h3>
+                        <form class="row contact_form" action="prosespesan.php" method="post" novalidate="novalidate">
+                            <input type="text" hidden="yes" value="<?= $kode_pertandingan ?>" class="form-control" name="kode" placeholder="klub yang bertanding">
+                            <input type="text" hidden="yes" value="<?= $harga ?>" class="form-control" name="ekonomi" placeholder="klub yang bertanding">
+                            <!-- <div class="col-md-10 form-group p_star">
+                                <input type="text" class="form-control" name="id" placeholder="ID">
+                                <span class="placeholder"></span>
+                            </div> -->
+                            <div class="col-md-10 form-group p_star">
+                                <input type="text" class="form-control" name="nama" placeholder="nama lengkap">
+                                <!-- <span class="placeholder"></span> -->
+                            </div>
+                            <div class="col-md-10 form-group p_star">
+                                <input type="text" class="form-control" name="email" placeholder="email">
+                                <!-- <span class="placeholder"></span> -->
+                            </div>
+                            <div class="col-md-10 form-group p_star">
+                                <input type="text" class="form-control" name="jumlah_tiket" placeholder="jumlah tiket">
                                 <!-- <span class="placeholder"></span> -->
                             </div>
                             
@@ -111,6 +132,64 @@ require "koneksi.php";
                             <input type="submit" name="submit" value="pesan">       
                         </div>
                         </form>                      
+                                <h5>kelas</h5>
+                                <select class="country_select" name="kelas"> 
+                                    <option value="">Pilih Kelas</option>                            
+                                    <option value="Ekonomi">Ekonomi</option>
+                                    <option value="Vip">Vip</option>
+                                    <!-- <option value="4">vvip</option> -->
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-10 form-group p_star">
+                                 <h5>pembayaran</h5>
+                                <input type="text" disabled="yes" name="" class="form-control" value="BRI (999123123)">
+                            </div>
+
+                            <div class="col-md-10 form-group">
+                                <input type="submit" class="btn btn-primary" name="submit">   
+                                
+                                <button class="btn btn-link">Kembali</button></a>    
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <h3>Tiket Pertandingan</h3>
+                                <!-- <span class="placeholder"></span> -->
+                            <div class="col-md-10 form-group p_star">
+                                <label>Pertandingan</label>
+                                <input type="text" disabled="yes" value="<?= $pertandingan ?>" class="form-control" name="klubbbb" placeholder="klub yang bertanding">
+                                <!-- <span class="placeholder"></span> -->
+                            </div>
+                            <div class="col-md-10 form-group p_star">
+                                <label>Tanggal</label>
+                                <input type="text" disabled="yes" value="<?= $tanggal ?>" class="form-control" name="klub" >
+                                <!-- <span class="placeholder"></span> -->
+                            </div>
+                            <div class="col-md-10 form-group p_star">
+                                <label>Waktu</label>
+                                <input type="text" disabled="yes" value="<?= $waktu ?> WIB" class="form-control" name="klub" >
+                                <!-- <span class="placeholder"></span> -->
+                            </div>
+                            <div class="col-md-10 form-group p_star">
+                                <label>Stadion</label>
+                                <input type="text" disabled="yes" value="<?= $stadion ?>" class="form-control" name="klub" >
+                                <!-- <span class="placeholder"></span> -->
+                            </div>
+                            <div class="col-md-10 form-group p_star">
+                                <div class="row">
+                                <div class="col">
+                                    <label>Harga Ekonomi</label>
+                                <input type="text" disabled="yes" value="<?= $harga ?>" class="form-control" name="klub" >
+                                </div>    
+                                <div class="col">
+                                    <label>Harga VIP</label>
+                                <input type="text" disabled="yes" value="<?= $harga + 100000 ?>" class="form-control" name="klub" >
+                                </div>
+                                </div>
+                                
+                                <!-- <span class="placeholder"></span> -->
+                            </div>
                     </div>
                 </div>
             </div>
@@ -121,5 +200,4 @@ require "koneksi.php";
     <!-- start footer Area -->
 <?php include "footer.php"; ?>
 </body>
-
 </html>
