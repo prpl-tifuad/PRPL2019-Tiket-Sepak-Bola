@@ -37,7 +37,7 @@ require "koneksi.php";
                             </div>
                             <div class="col-md-10 form-group p_star">
                                 <h5>ID</h5>
-                                <input type="text" class="form-control" name="id" placeholder="ID" value="<?php echo uniqid('tkt'); ?>" readonly="true">
+                                <input type="text" class="form-control" name="id" placeholder="ID" value="<?php rand(000,999); ?>" readonly="true">
                                <!--  <span class="placeholder"></span> -->
                             </div>
                             
