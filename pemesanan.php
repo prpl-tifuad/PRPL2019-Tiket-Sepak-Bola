@@ -1,6 +1,6 @@
 <?php
         include 'config.php';
-        $kode_pertandingan = $_GET['tiket'];
+        $kode_pertandingan = $_GET['kode_pertandingan'];
         $data = mysqli_query($mysqli,"SELECT *, Date(waktu_pertandingan) as tanggal, time(waktu_pertandingan) as waktu FROM pertandingan where liga = 'liga1' or liga='liga2' or liga='pialapresiden' and kode_pertandingan = '$kode_pertandingan'")
      ?>
      <?php if(mysqli_num_rows($data)>0){
