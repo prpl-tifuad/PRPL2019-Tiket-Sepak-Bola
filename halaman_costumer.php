@@ -86,7 +86,7 @@ $query = mysqli_query($koneksi,"SELECT * FROM pertandingan where liga = 'liga1' 
 								</div>
 								<div class="prd-bottom">
 
-									<a href="" class="social-info">
+									<a href="pemesanan.php?tiket=<?= $data['kode_pertandingan'] ?>" class="social-info">
 										<span class="ti-bag"></span>
 										<p class="hover-text">pesan</p>
 									</a>
