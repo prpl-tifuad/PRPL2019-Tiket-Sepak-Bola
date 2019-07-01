@@ -34,7 +34,12 @@
 		</form>
 		
 	</div>
- 
+ <label>
+ 	<td>username costumer : kid </td><br>
+ 	<td>password costumer : kid123</td><br>
+ 	<td>username admin : ikd</td><br>
+ 	<td>password admin : ikd123</td>
+ </label>
  
 </body>
 </html>
