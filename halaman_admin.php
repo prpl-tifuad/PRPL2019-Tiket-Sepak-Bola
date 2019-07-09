@@ -19,6 +19,7 @@
         <li><a href="halaman_admin1.php">liga 1</a></li>&emsp;
         <li><a href="halaman_admin2.php">liga 2</a></li>
         <li><a href="halaman_admin3.php">piala presiden</a></li>
+        <li><a href="logout.php">logout</a></li>
         <i class="small material-icons left" >search</i>
          <li class="input-field"><input type="text" name="cari" required>
          </li>

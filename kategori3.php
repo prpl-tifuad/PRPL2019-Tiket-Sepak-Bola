@@ -157,8 +157,7 @@ $query = mysqli_query($koneksi,"SELECT * FROM pertandingan where liga = 'pialapr
                         <!-- single product -->
                         <?php if(mysqli_num_rows($query)>0){ ?>
                         <?php
-            while($data = mysqli_fetch_array($query)){
-?>
+            while($data = mysqli_fetch_array($query)){ ?>
                         <div class="col-lg-4 col-md-6">
                             <div class="single-product">
                                 <img class="img-fluid" src="img/product/pialapresiden/<?php echo $data['gambar'];?>" alt="">

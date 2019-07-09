@@ -8,7 +8,7 @@
 <body>
  
 	<h1>Selamat Datang di Website Penjualan Tiket Sepak Bola<br>Indonesia</h1>
-
+	<!-- fungsi Validasi -->
 	<?php 
 	if(isset($_GET['pesan'])){
 		if($_GET['pesan']=="gagal"){
