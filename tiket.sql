@@ -41,7 +41,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`cus_id`, `cus_nama`, `cus_alamat`, `cus_notlp`, `cus_password`) VALUES
-(1, 'fajri', 'Bantul, Yogyakarta', '087838916161', '123'),
+(1, 'fani', 'Bantul, Yogyakarta', '08552134162', '123'),
 (2, 'kurnia', 'Bantul, Yogtakarta', '08783871231', '123'),
 (4536, 'dik', 'Jogja, Yogyakarta', '085734258900', '888'),
 (9897, 'daud', 'Yogyakarta', '085436787761', '777'),
@@ -94,9 +94,9 @@ CREATE TABLE `pemesanan` (
 
 INSERT INTO `pemesanan` (`id`, `nama`, `klub_b`, `tanggal`, `stadion`, `kelas`, `total`, `pembayaran`, `liga`) VALUES
 ('20', 'juki', 'BHAYANGKARA FC VS SEMEN PADANG', '0000-00-00 00:00:00', 'Patriot', 'ekonomi', '70000', 'bca', 'pialapresiden'),
-('207', 'yunus', 'PERSIB BANDUNG VS PS BARITO PUTERA', '2019-02-02 18:30:00', 'Kapten I Wayan Dipta, Gianyar', 'vip', '150000', 'bca', 'liga1'),
+('207', 'yohanes', 'PERSIB BANDUNG VS PS BARITO PUTERA', '2019-02-02 18:30:00', 'Kapten I Wayan Dipta, Gianyar', 'vip', '150000', 'bca', 'liga1'),
 ('323', 'diky', 'PSM MAKASSAR VS PSMS', '2019-02-03 15:30:00', 'Andi Mattalatta, Makassar', 'ekonomi', '650000', 'bca', 'liga1'),
-('708', 'yunus v2', 'PERSIBAT VS ACEH UNITED', '2019-03-11 18:30:00', 'Sarengat', 'ekonomi', '400000', 'bca', 'liga2'),
+('708', 'yohanes v2', 'PERSIBAT VS ACEH UNITED', '2019-03-11 18:30:00', 'Sarengat', 'ekonomi', '400000', 'bca', 'liga2'),
 ('777', 'juki', 'PSPS VS PSIR', '2019-03-11 15:30:00', 'Krida, Rembang', 'ekonomi', '250000', 'bca', 'liga2');
 
 -- --------------------------------------------------------
